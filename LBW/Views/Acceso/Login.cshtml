@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="page page-center">
+    <div class="container-tight py-4">
+        <div class="text-center mb-4">
+            <a href="." class="navbar-brand navbar-brand-autodark">
+            </a>
+        </div>
+
+        <div class="block-1">
+            <img class="log" src="~/img/Logov3.webp" alt="Pautas">
+            <img class="img" src="~/img/fondo_iniciov2.webp" alt="Veladero">
+        </div>
+        <div class="block-2">
+            <h1 class="page-title id">
+                ACCESO AL SISTEMA
+            </h1>
+            <div class="form-container">
+                @using (Html.BeginForm())
+                {
+                    using (Html.DevExtreme().ValidationGroup())
+                    {
+                        @Html.AntiForgeryToken()
+                        @(Html.DevExtreme().Form<LBW.Models.Usuario>()
+                            .LabelLocation(FormLabelLocation.Top)
+                            .ShowValidationSummary(true)
+                            .Items(items =>
+                            {
+                                items.AddGroup()
+
+                                .Items(groupItems =>
+                                {
+                                    groupItems.AddSimpleFor(m => m.Nombre)
+                                .Label(l => l.Visible(false))
+                                .Editor(e => e.TextBox()
+                                .Placeholder("Usuario")
+                                .ElementAttr(new { @class = "form-input-user" })
+                                );
+
+
+
+                                    groupItems.AddSimpleFor(m => m.Email)
+                                .Label(l => l.Visible(false))
+                                .Editor(e => e.TextBox()
+                                .Placeholder("Contraseña")
+                                .Mode(TextBoxMode.Password)
+                                .ElementAttr(new { @class = "form-input-pass" })
+                                );
+                                });
+                                items.AddButton()
+
+                                .ButtonOptions(b => b.Text("Acceder")
+                                .Type(ButtonType.Default)
+                                .UseSubmitBehavior(true)
+                                .ElementAttr(new { @class = "botton" })
+                                );
+
+                            })
+                            .FormData(Model)
+                            )
+                    }
+                }
+            </div>
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" style="width: 300px; height: 100px; margin: auto; margin-top: 20px;">@TempData["Error"]</div>
+            }
+        </div>
+        <div class="dx-form-validation-summary dx-validationsummary dx-widget dx-collection">
+            <div class="dx-item dx-validationsummary-item">
+                <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
+            </div>
+        </div>
+    </div>
+</div>
+

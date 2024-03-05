@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard - Labware</title>
+    <!-- CSS files -->
+    <link href="~/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="~/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="~/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="~/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="~/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- Agrega tus otros archivos CSS aquí -->
+    <style>
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+        }
+
+        .aside {
+            width: 25%; /* Ajusta el ancho del aside según tu diseño */
+            background-color: #f0f0f0; /* Coloca el color de fondo deseado */
+        }
+
+        .content {
+            flex: 1;
+            background-color: #ffffff; /* Coloca el color de fondo deseado */
+        }
+
+        .footer {
+            margin-top: auto;
+            background-color: #f0f0f0; /* Coloca el color de fondo deseado */
+        }
+
+ 
+    </style>
+</head>
+<body>
+    <script src="~/dist/js/demo-theme.min.js"></script>
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark" style="margin-top: 20px;">
+                <a href=".">
+                    <img src="~/img/BARRICK LOGO.webp" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                </a>
+            </h1>
+            
+              <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+                    <li class="nav-item @ViewBag.bienvenida">
+                         <a asp-controller="Inicio" asp-action="Bienvenida" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                            </svg>
+                            <span class="nav-link-title" style="margin-left:1rem;">
+                                Inicio
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown @ViewBag.gm">
+                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M11 19h-6a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v4" />
+                                    <path d="M15 19l2 2l4 -4" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title" style="margin-left:0.4rem;">
+                                Gestión de Muestras
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+
+                                    <a asp-controller="GM" asp-action="IngresoMuestras" class="dropdown-item @ViewBag.ingresomuestra">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M15 3v15a3 3 0 0 1 -6 0v-15" />
+                                            <path d="M9 12h6" />
+                                            <path d="M8 3h8" />
+                                        </svg>
+
+                                        <span class="nav-link-title" style="margin-left:0.4rem;">
+                                            Ingreso de Muestras
+                                        </span>
+                                    </a>
+
+                                    <a asp-controller="GM" asp-action="Recepcion" class="dropdown-item @ViewBag.recepcion">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M20 8.04l-12.122 12.124a2.857 2.857 0 1 1 -4.041 -4.04l12.122 -12.124" />
+                                            <path d="M7 13h8" />
+                                            <path d="M19 15l1.5 1.6a2 2 0 1 1 -3 0l1.5 -1.6z" />
+                                            <path d="M15 3l6 6" />
+                                        </svg>
+
+                                        <span class="nav-link-title" style="margin-left:0.4rem;" >
+                                            Recepción
+                                        </span>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown @ViewBag.gr">
+                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M11 19h-6a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v4" />
+                                  <path d="M15 19l2 2l4 -4" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title" style="margin-left:0.4rem;">
+                                Gestión de Resultados
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+
+                                    <a asp-controller="GR" asp-action="Analisis" class="dropdown-item @ViewBag.analisis">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M15 3v15a3 3 0 0 1 -6 0v-15" />
+                                            <path d="M9 12h6" />
+                                            <path d="M8 3h8" />
+                                        </svg>
+
+                                        <span class="nav-link-title" style="margin-left:0.4rem;">
+                                            Análisis/Resultados
+                                        </span>
+                                    </a>
+
+                                    <a asp-controller="GR" asp-action="Autorizar" class="dropdown-item @ViewBag.autorizar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M20 8.04l-12.122 12.124a2.857 2.857 0 1 1 -4.041 -4.04l12.122 -12.124" />
+                                            <path d="M7 13h8" />
+                                            <path d="M19 15l1.5 1.6a2 2 0 1 1 -3 0l1.5 -1.6z" />
+                                            <path d="M15 3l6 6" />
+                                        </svg>
+
+                                        <span class="nav-link-title" style="margin-left:0.4rem;" >
+                                            Autorizar/Resultados
+                                        </span>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item @ViewBag.reporte">
+                        <a asp-controller="ReporteCliente" asp-action="Reporte" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                <path d="M9 9l1 0" />
+                                <path d="M9 13l6 0" />
+                                <path d="M9 17l6 0" />
+                            </svg>
+                            <span class="nav-link-title" style="margin-left:1rem;">
+                                Reporte a Cliente
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <div class="page-wrapper">
+        <div class="container-xl">
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        @RenderSection("PagePreTitle", false)
+                        
+                    </div>
+                    <div class="col-12 col-md-auto ms-auto d-print-none">
+                        <div class="btn-list">
+                            @RenderSection("PageActions", false)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <main role="main" class="container">
+                      
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl">
+            <div class="row text-center align-items-center justify-content-between">
+                <div class="col-lg-auto ms-lg-auto">
+                    <p style="color: #A79A66; text-decoration: none; margin-bottom: 0; font-size:15px;">Copyright (c) 2024 Barrick Labware</p>
+                </div>
+                <div class="col-lg-auto">
+                    <ul class="list-inline list-inline-dots mb-0">
+                        <li class="list-inline-item">
+                            <a href="./pdf/Manual de Vistas.pdf" target="_blank" class="link-secondary" rel="noopener">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-octagon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" />
+                                    <path d="M12 9h.01" />
+                                    <path d="M11 12h1v4h1" />
+                                </svg>
+                                <span style="margin-left: 5px; font-size:15px; color: #A79A66; text-decoration: none;">Ayuda</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    @RenderSection("PageModals", false)
+
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="~/dist/js/tabler.min.js" defer></script>
+    <script src="~/dist/js/demo.min.js" defer></script>
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@using LBW.Models
+@{
+    ViewData["Title"] = "Bienvenida";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .user-icon-container {
+        display: flex;
+        align-items: center;
+        margin-left:30px;
+    }
+
+        .user-icon-container .icon-tabler {
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .user-icon-container .page-title {
+            margin-left: -4px;
+            color: #a79a66;
+        }
+
+        .user-icon-container .page-title-home {
+            margin-left: -4px;
+            color: #a79a66;
+        }
+
+    .page-title-home {
+        margin-top: 18px;
+    }
+
+</style>
+
+@section PagePreTitle {
+
+    <div class="col">
+        <!-- Page pre-title -->
+        <div class="user-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+            </svg>
+            <h2 class="page-title-home">
+                Bienvenido
+            </h2>
+        </div>
+    </div>
+
+}
+
+@section PageActions {
+
+
+}
+
+
+<div class="row row-cards">
+    <div class="col-12">
+        <div class="card card-md" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+            <div class="card-stamp card-stamp-lg">
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-10">
+                        <div class="markdown" style="margin-top: -10px;">
+                            <p><strong>@User.Identity.Name,</strong> Bienvenido a Labware</p>
+                            <p>Las Pautas 1.0 reconocen la importancia de elegir el tipo de mantenimiento m&aacute;s adecuado para cada situaci&oacute;n, lo que ayuda a evitar problemas y dolores de cabeza al adoptar una pol&iacute;tica general de mantenimiento para toda una empresa. Esto asegura que el mantenimiento sea m&aacute;s efectivo y eficiente para cada equipo.</p>
+                            <p>Si se aplica las Pautas 1.0 a un sistema de mantenimiento existente, se puede reducir la cantidad de mantenimiento rutinario realizado en un 40% a 70%. Por otro lado, si se utiliza RCM para desarrollar un nuevo sistema de mantenimiento, la carga de trabajo programada ser&aacute; mucho menor que si se hubiera utilizado m&eacute;todos convencionales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
