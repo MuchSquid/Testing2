@@ -31,16 +31,18 @@ namespace LBW.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario _usuario)
         {
-            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre, ConvertirSha256(_usuario.Email));
 
+            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre, _usuario.Email);
+            Console.WriteLine("///////////////////////////");
+            Console.WriteLine(usuario.Email);
             try
             {
-                if (true)
+                if (usuario != null)
                 {
                     var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, usuario.Nombre)
-        };
+                    {
+                     new Claim(ClaimTypes.Name, usuario.Nombre)
+                    };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -60,7 +62,11 @@ namespace LBW.Controllers
                 TempData["Error"] = "Error al iniciar sesión: " + ex.Message;
                 return View();
             }
-
+            if(usuario == null)
+            {
+                TempData["Error"] = "No hay usuario";
+            }
+            return View();
         }
 
         public async Task<IActionResult> Logout()

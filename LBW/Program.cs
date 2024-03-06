@@ -16,6 +16,13 @@ builder.Services
     .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
 builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Acceso/Login"; // Ruta a la que se redirigirán los usuarios no autenticados
+        options.LogoutPath = "/Acceso/Logout"; // Ruta para el proceso de cierre de sesión
+        // Puedes configurar más opciones según sea necesario
+    });
 
 var app = builder.Build();
 
