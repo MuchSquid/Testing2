@@ -33,8 +33,6 @@ namespace LBW.Controllers
         {
 
             var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre, _usuario.Email);
-            Console.WriteLine("///////////////////////////");
-            Console.WriteLine(usuario.Email);
             try
             {
                 if (usuario != null)
