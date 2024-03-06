@@ -11,6 +11,10 @@
     <link href="~/dist/css/tabler-payments.min.css" rel="stylesheet" />
     <link href="~/dist/css/tabler-vendors.min.css" rel="stylesheet" />
     <link href="~/dist/css/demo.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Site.css" asp-append-version="true" />
+    <script src="~/js/vendor.js" asp-append-version="true"></script>        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script> 
     <!-- Agrega tus otros archivos CSS aquí -->
     <style>
         :root {
@@ -192,6 +196,18 @@
                         </a>
                     </li>
 
+                    <li class="nav-item @ViewBag.perfil">
+                        <a asp-controller="Usuarios" asp-action="Usuarios" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                            </svg>
+                            <span class="nav-link-title" style="margin-left:1rem;">
+                                Perfil
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -233,7 +249,7 @@
                 <div class="col-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="./pdf/Manual de Vistas.pdf" target="_blank" class="link-secondary" rel="noopener">
+                            <a href="~/pdf/Manual de Vistas.pdf" target="_blank" class="link-secondary" rel="noopener">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-octagon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" />
@@ -255,7 +271,7 @@
     <!-- Tabler Core -->
     <script src="~/dist/js/tabler.min.js" defer></script>
     <script src="~/dist/js/demo.min.js" defer></script>
-
+ 
 
 
     @await RenderSectionAsync("Scripts", required: false)

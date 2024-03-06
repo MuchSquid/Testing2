@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GZ10+FTWBSJ8N/Rh2KZURu440SS3d/sU+wwgMwQw3LcaYdfE82fakuK5cPmIdBynBlrXDhrLbb8OVZbAAK47ow==",
+  "dgSpecHash": "KO1NKj8PiZfmyIyP+Lnw31wC8fGkFPPWpS/bycs+nbogS17yHbuna/UGqkJ61U9oHizut/+UoVrRWU7oDgpjYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\esteb\\Desktop\\Testeo2\\Testing2\\LBW\\LBW.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\esteb\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\esteb\\.nuget\\packages\\buildbundlerminifier\\2.9.406\\buildbundlerminifier.2.9.406.nupkg.sha512",
     "C:\\Users\\esteb\\.nuget\\packages\\devextreme.aspnet.core\\22.1.12\\devextreme.aspnet.core.22.1.12.nupkg.sha512",
     "C:\\Users\\esteb\\.nuget\\packages\\devextreme.aspnet.data\\2.8.6\\devextreme.aspnet.data.2.8.6.nupkg.sha512",

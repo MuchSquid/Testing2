@@ -1,0 +1,84 @@
+﻿ @{
+    ViewData["Title"] = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .user-icon-container {
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+    }
+
+        .user-icon-container .icon-tabler {
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .user-icon-container .page-title {
+            margin-left: -4px;
+            color: #a79a66;
+        }
+
+        .user-icon-container .page-title-home {
+            margin-left: -4px;
+            color: #a79a66;
+        }
+
+    .page-title-home {
+        margin-top: 18px;
+    }
+   
+</style>
+
+@section PagePreTitle {
+
+
+    <div class="col">
+        <!-- Page pre-title -->
+        <div class="user-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+            </svg>
+            <h2 class="page-title-home">
+                Perfil Usuario
+            </h2>
+        </div>
+    </div>
+
+}
+
+@section PageActions {
+
+
+}
+
+@(Html.DevExtreme().DataGrid<LBW.Models.Entity.Usuario>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("Usuarios")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("UsuarioID")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Nombre);
+
+        columns.AddFor(m => m.Email);
+
+        columns.AddFor(m => m.Clave);
+
+        columns.AddFor(m => m.FechaCreacion);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
+

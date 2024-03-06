@@ -40,6 +40,11 @@ namespace LBW.Models.Entity
                     .HasColumnName("Email")
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Clave)
+                   .IsRequired(false)
+                   .HasColumnName("contrasena_hash")
+                   .HasMaxLength(255);
+
                 entity.Property(e => e.FechaCreacion)
                     .HasColumnName("FechaCreacion")
                     .HasColumnType("datetime")

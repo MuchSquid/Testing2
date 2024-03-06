@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.6" />
     <PackageReference Include="DevExtreme.AspNet.Core" Version="22.1.12" />
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />

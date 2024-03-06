@@ -11,6 +11,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using LBW.Models.Entity;
+using Microsoft.CodeAnalysis.Scripting;
+using BCrypt.Net;
+
 
 namespace LBW.Controllers
 {
@@ -18,6 +21,12 @@ namespace LBW.Controllers
     public class UsuariosController : Controller
     {
         private LbwContext _context;
+
+        public IActionResult Usuarios()
+        {
+            @ViewBag.perfil = "active";
+            return View();
+        }
 
         public UsuariosController(LbwContext context) {
             _context = context;
@@ -29,6 +38,7 @@ namespace LBW.Controllers
                 i.UsuarioID,
                 i.Nombre,
                 i.Email,
+                i.Clave,
                 i.FechaCreacion
             });
 
@@ -41,12 +51,42 @@ namespace LBW.Controllers
             return Json(await DataSourceLoader.LoadAsync(usuarios, loadOptions));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> HashearYActualizarContrasenas()
+        {
+            // Este es solo un ejemplo y no debe usarse en producción sin las debidas precauciones.
+            var usuarios = await _context.Usuarios.ToListAsync();
+
+            foreach (var usuario in usuarios)
+            {
+                // Aquí deberías tener la contraseña en texto plano temporalmente, asumiendo que ya existe
+                string contrasenaPlana = usuario.Clave; // Esta propiedad debería existir temporalmente
+
+                // Genera el hash de la contraseña
+                string contrasenaHash = BCrypt.Net.BCrypt.HashPassword(contrasenaPlana);
+
+                // Almacena el hash en la nueva columna
+                usuario.Clave  = contrasenaHash;
+             //   bool esCorrecta = BCrypt.Net.BCrypt.Verify(contrasenaIntroducidaPorElUsuario, hashAlmacenado);
+         
+                // Opcional: Eliminar la contraseña en texto plano si ya no es necesaria
+                // usuario.ContrasenaPlana = null;
+            }
+
+            // Guarda los cambios en la base de datos
+            await _context.SaveChangesAsync();
+
+            return Ok("Contraseñas actualizadas.");
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Post(string values) {
             var model = new Usuario();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
+            model.Clave = BCrypt.Net.BCrypt.HashPassword(model.Clave);
             if(!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
@@ -85,6 +125,7 @@ namespace LBW.Controllers
             string USUARIO_ID = nameof(Usuario.UsuarioID);
             string NOMBRE = nameof(Usuario.Nombre);
             string EMAIL = nameof(Usuario.Email);
+            string CLAVE = nameof(Usuario.Clave);
             string FECHA_CREACION = nameof(Usuario.FechaCreacion);
 
             if(values.Contains(USUARIO_ID)) {
@@ -99,7 +140,12 @@ namespace LBW.Controllers
                 model.Email = Convert.ToString(values[EMAIL]);
             }
 
-            if(values.Contains(FECHA_CREACION)) {
+            if (values.Contains(CLAVE))
+            {
+                model.Clave = Convert.ToString(values[CLAVE]);
+            }
+
+            if (values.Contains(FECHA_CREACION)) {
                 model.FechaCreacion = Convert.ToDateTime(values[FECHA_CREACION]);
             }
         }

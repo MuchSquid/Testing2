@@ -2185,3 +2185,4 @@ C:\Users\esteb\Desktop\testeo2\Testing2\LBW\obj\Debug\net6.0\refint\LBW.dll
 C:\Users\esteb\Desktop\testeo2\Testing2\LBW\obj\Debug\net6.0\LBW.pdb
 C:\Users\esteb\Desktop\testeo2\Testing2\LBW\obj\Debug\net6.0\LBW.genruntimeconfig.cache
 C:\Users\esteb\Desktop\testeo2\Testing2\LBW\obj\Debug\net6.0\ref\LBW.dll
+C:\Users\esteb\Desktop\Testeo2\Testing2\LBW\bin\Debug\net6.0\BCrypt.Net-Next.dll

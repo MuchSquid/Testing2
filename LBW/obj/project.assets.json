@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "BCrypt.Net-Next/4.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "BuildBundlerMinifier/2.9.406": {
         "type": "package",
         "build": {
@@ -4730,6 +4743,37 @@
     }
   },
   "libraries": {
+    "BCrypt.Net-Next/4.0.3": {
+      "sha512": "W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.0.3.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net20/BCrypt.Net-Next.dll",
+        "lib/net20/BCrypt.Net-Next.xml",
+        "lib/net35/BCrypt.Net-Next.dll",
+        "lib/net35/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt.Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt.Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt.Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/net5.0/BCrypt.Net-Next.dll",
+        "lib/net5.0/BCrypt.Net-Next.xml",
+        "lib/net6.0/BCrypt.Net-Next.dll",
+        "lib/net6.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt.Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt.Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
+      ]
+    },
     "BuildBundlerMinifier/2.9.406": {
       "sha512": "jNgso4DDVEDTmM2O41WWI8OMC5CV0yMqMK/cRMJldO64XzC2PDdg+FV/GHqN6qh3KDuTKcDlB/t7F2WBWrNOgQ==",
       "type": "package",
@@ -12661,6 +12705,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BCrypt.Net-Next >= 4.0.3",
       "BuildBundlerMinifier >= 2.9.406",
       "DevExtreme.AspNet.Core >= 22.1.12",
       "DevExtreme.AspNet.Data >= 2.8.6",
@@ -12680,11 +12725,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esteb\\Desktop\\testeo2\\Testing2\\LBW\\LBW.csproj",
+      "projectUniqueName": "C:\\Users\\esteb\\Desktop\\Testeo2\\Testing2\\LBW\\LBW.csproj",
       "projectName": "LBW",
-      "projectPath": "C:\\Users\\esteb\\Desktop\\testeo2\\Testing2\\LBW\\LBW.csproj",
+      "projectPath": "C:\\Users\\esteb\\Desktop\\Testeo2\\Testing2\\LBW\\LBW.csproj",
       "packagesPath": "C:\\Users\\esteb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esteb\\Desktop\\testeo2\\Testing2\\LBW\\obj\\",
+      "outputPath": "C:\\Users\\esteb\\Desktop\\Testeo2\\Testing2\\LBW\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
@@ -12723,6 +12768,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "BCrypt.Net-Next": {
+            "target": "Package",
+            "version": "[4.0.3, )"
+          },
           "BuildBundlerMinifier": {
             "target": "Package",
             "version": "[2.9.406, )"
