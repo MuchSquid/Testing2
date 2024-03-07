@@ -13,7 +13,8 @@ using System.Threading.Tasks;
 using LBW.Models.Entity;
 using Microsoft.CodeAnalysis.Scripting;
 using BCrypt.Net;
-
+using System.Text;
+using System.Security.Cryptography;
 
 namespace LBW.Controllers
 {
@@ -63,7 +64,7 @@ namespace LBW.Controllers
                 string contrasenaPlana = usuario.Clave; // Esta propiedad debería existir temporalmente
 
                 // Genera el hash de la contraseña
-                string contrasenaHash = BCrypt.Net.BCrypt.HashPassword(contrasenaPlana);
+                string contrasenaHash = ConvertirSha256(contrasenaPlana);
 
                 // Almacena el hash en la nueva columna
                 usuario.Clave  = contrasenaHash;
@@ -79,6 +80,19 @@ namespace LBW.Controllers
             return Ok("Contraseñas actualizadas.");
         }
 
+        public static string ConvertirSha256(string texto)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                byte[] result = hash.ComputeHash(enc.GetBytes(texto));
+                foreach (byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+            return Sb.ToString();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post(string values) {

@@ -31,8 +31,7 @@ namespace LBW.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario _usuario)
         {
-
-            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre, _usuario.Email);
+            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre,_usuario.Clave);
             try
             {
                 if (usuario != null)
@@ -53,7 +52,6 @@ namespace LBW.Controllers
 
                     return RedirectToAction("Bienvenida", "Inicio");
                 }
-              
             }
             catch (Exception ex)
             {
@@ -73,18 +71,5 @@ namespace LBW.Controllers
             return RedirectToAction("Login", "Acceso");
         }
 
-        public static string ConvertirSha256(string texto)
-        {
-            StringBuilder Sb = new StringBuilder();
-
-            using (SHA256 hash = SHA256.Create())
-            {
-                Encoding enc = Encoding.UTF8;
-                byte[] result = hash.ComputeHash(enc.GetBytes(texto));
-                foreach (byte b in result)
-                    Sb.Append(b.ToString("x2"));
-            }
-            return Sb.ToString();
-        }
     }
 }
