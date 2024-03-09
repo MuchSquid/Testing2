@@ -37,10 +37,10 @@
     <div class="col">
         <!-- Page pre-title -->
         <div class="user-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
             </svg>
             <h2 class="page-title-home">
                 Perfil Usuario
@@ -75,10 +75,48 @@
 
         columns.AddFor(m => m.FechaCreacion);
     })
-    .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
+    .ShowBorders(true)
+               .RowAlternationEnabled(false)
+               .ShowColumnLines(true)
+               .ShowRowLines(true)
+               .ColumnHidingEnabled(false)
+               .Paging(paging => paging.PageSize(50))
+               .FilterRow(f => f.Visible(true))
+               .HeaderFilter(f => f.Visible(true))
+               .SearchPanel(searchPanel => searchPanel.Visible(true))
+               .Pager(pager =>
+               {
+                   pager.ShowPageSizeSelector(true);
+                   pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                   pager.ShowInfo(true);
+               })
+               .RemoteOperations(true)
+        .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowAdding(true)
+            .AllowUpdating(true)
+            .AllowDeleting(true)
+            .UseIcons(true)
+                       .Popup(p => p
+                           .Title("Usuarios")
+                           .ShowTitle(true)
+                           .Width("70%")
+                           .Height(600)
+                       )
+             .Form(f => f.Items(items =>
+                    {
+                        items.AddGroup()
+                            .ColCount(2)
+                            .ColSpan(2)
+                            .Items(groupItems =>
+                            {
+                                groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                                groupItems.AddSimpleFor(m => m.Email).ColSpan(2);
+                                groupItems.AddSimpleFor(m => m.Clave).ColSpan(2);
+                                groupItems.AddSimpleFor(m => m.FechaCreacion).ColSpan(2);
+
+                            });
+
+                    }))
     )
 )
 

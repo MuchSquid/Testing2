@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard - Labware</title>
     <!-- CSS files -->
-    <link href="~/dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="~/dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="~/dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="~/dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="~/dist/css/demo.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
+    <link href="~/dist/css/tabler.min.css?1692870487" rel="stylesheet" />
+    <link href="~/dist/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
+    <link href="~/dist/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
+    <link href="~/dist/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
+    <link href="~/dist/css/demo.min.css?1692870487" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/Site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Barrick.css" asp-append-version="true" />
     <script src="~/js/vendor.js" asp-append-version="true"></script>        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script> 
     <!-- Agrega tus otros archivos CSS aquí -->
@@ -90,7 +90,7 @@
                                     <path d="M15 19l2 2l4 -4" />
                                 </svg>
                             </span>
-                            <span class="nav-link-title" style="margin-left:0.4rem;">
+                            <span class="nav-link-title" style="margin-left:0.4rem; align-items:center;">
                                 Gestión de Muestras
                             </span>
                         </a>
@@ -106,7 +106,7 @@
                                             <path d="M8 3h8" />
                                         </svg>
 
-                                        <span class="nav-link-title" style="margin-left:0.4rem;">
+                                        <span class="nav-link-title" style="margin-left:0.4rem; align-items:center;">
                                             Ingreso de Muestras
                                         </span>
                                     </a>
@@ -120,7 +120,7 @@
                                             <path d="M15 3l6 6" />
                                         </svg>
 
-                                        <span class="nav-link-title" style="margin-left:0.4rem;" >
+                                        <span class="nav-link-title" style="margin-left:0.4rem; align-items:center;">
                                             Recepción
                                         </span>
 
@@ -140,7 +140,7 @@
                                   <path d="M15 19l2 2l4 -4" />
                                 </svg>
                             </span>
-                            <span class="nav-link-title" style="margin-left:0.4rem;">
+                            <span class="nav-link-title" style="margin-left:0.4rem; align-items:center;">
                                 Gestión de Resultados
                             </span>
                         </a>
@@ -149,25 +149,27 @@
                                 <div class="dropdown-menu-column">
 
                                     <a asp-controller="GR" asp-action="Analisis" class="dropdown-item @ViewBag.analisis">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-analyze" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M15 3v15a3 3 0 0 1 -6 0v-15" />
-                                            <path d="M9 12h6" />
-                                            <path d="M8 3h8" />
+                                            <path d="M20 11a8.1 8.1 0 0 0 -6.986 -6.918a8.095 8.095 0 0 0 -8.019 3.918" />
+                                            <path d="M4 13a8.1 8.1 0 0 0 15 3" />
+                                            <path d="M19 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                            <path d="M5 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                                         </svg>
 
-                                        <span class="nav-link-title" style="margin-left:0.4rem;">
+                                        <span class="nav-link-title" style="margin-left:0.4rem; align-items:center;">
                                             Análisis/Resultados
                                         </span>
                                     </a>
 
                                     <a asp-controller="GR" asp-action="Autorizar" class="dropdown-item @ViewBag.autorizar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-test-pipe" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-like" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M20 8.04l-12.122 12.124a2.857 2.857 0 1 1 -4.041 -4.04l12.122 -12.124" />
-                                            <path d="M7 13h8" />
-                                            <path d="M19 15l1.5 1.6a2 2 0 1 1 -3 0l1.5 -1.6z" />
-                                            <path d="M15 3l6 6" />
+                                            <path d="M3 16m0 1a1 1 0 0 1 1 -1h1a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1z" />
+                                            <path d="M6 20a1 1 0 0 0 1 1h3.756a1 1 0 0 0 .958 -.713l1.2 -3c.09 -.303 .133 -.63 -.056 -.884c-.188 -.254 -.542 -.403 -.858 -.403h-2v-2.467a1.1 1.1 0 0 0 -2.015 -.61l-1.985 3.077v4z" />
+                                            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                            <path d="M5 12.1v-7.1a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-2.3" />
                                         </svg>
 
                                         <span class="nav-link-title" style="margin-left:0.4rem;" >
@@ -190,7 +192,7 @@
                                 <path d="M9 13l6 0" />
                                 <path d="M9 17l6 0" />
                             </svg>
-                            <span class="nav-link-title" style="margin-left:1rem;">
+                            <span class="nav-link-title" style="margin-left:1rem; align-items:center;">
                                 Reporte a Cliente
                             </span>
                         </a>
@@ -198,17 +200,32 @@
 
                     <li class="nav-item @ViewBag.perfil">
                         <a asp-controller="Usuarios" asp-action="Usuarios" class="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A79A66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                             </svg>
-                            <span class="nav-link-title" style="margin-left:1rem;">
+                            <span class="nav-link-title" style="margin-left:1rem; align-items:center;">
                                 Perfil
                             </span>
                         </a>
                     </li>
+
+                    <li class="nav-item @ViewBag.acceso">
+                        <a asp-controller="Acceso" asp-action="Logout" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                            </svg>
+                            <span class="nav-link-title" style="margin-left:1rem;">
+                                Log Out
+                            </span>
+                        </a>
+                    </li>
+         
                 </ul>
+
             </div>
         </div>
     </aside>
