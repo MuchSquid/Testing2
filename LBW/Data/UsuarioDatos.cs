@@ -21,18 +21,20 @@ namespace LBW.Data
 
                     SqlCommand cmd = new SqlCommand("SP_Usuario_listar", conexion);
                     cmd.CommandType = CommandType.StoredProcedure;
-
+                    
                     using (var dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             _usuario.Add(new Usuario()
                             {
-                                UsuarioID = Convert.ToInt32(dr["USUARIOID"]),
-                                Nombre = dr["NOMBRE"].ToString(),
-                                Email = dr["EMAIL"].ToString(),
-                                FechaCreacion = Convert.ToDateTime(dr["FECHACREACION"]),
-                                Clave = dr["CONTRASENA_HASH"].ToString()
+                                UsuarioID = dr["UsuarioID"] != DBNull.Value ? dr["UsuarioID"].ToString() : string.Empty,
+                                NombreCompleto = dr["NombreCompleto"] != DBNull.Value ? dr["NombreCompleto"].ToString() : string.Empty,
+                                Correo = dr["Correo"] != DBNull.Value ? dr["Correo"].ToString() : string.Empty,
+                                Rol = dr["ROL"] != DBNull.Value ? Convert.ToBoolean(dr["ROL"]) : false, // Asumiendo valor predeterminado
+                                GMT_OFFSET = dr["GMT_OFFSET"] != DBNull.Value ? Convert.ToInt32(dr["GMT_OFFSET"]) : 0,
+                                UsuarioDeshabilitado = dr["UsuarioDeshabilitado"] != DBNull.Value ? Convert.ToBoolean(dr["ROL"]) : false,// Asumiendo valor predeterminado
+                                FechaDeshabilitado = dr["FechaDeshabilitado"] != DBNull.Value ? Convert.ToDateTime(dr["FechaDeshabilitado"]) : DateTime.MinValue // Asumiendo valor predeterminado
                             });
                         }
                     }
@@ -49,11 +51,10 @@ namespace LBW.Data
 
         }
 
-        public Usuario ValidarUsuario(string _usuario, string _clave)
+        public Usuario ValidarUsuario(string _usuario)
         {
-            Console.WriteLine("Pass 2 😍");
-            return ListaUsuario().Where(item => item.Nombre == _usuario && item.Clave == _clave).FirstOrDefault();
-  
+            Console.WriteLine("Pass 2 😍",_usuario);
+            return ListaUsuario().Where(item => item.UsuarioID == _usuario ).FirstOrDefault();
         }
 
         public static string ConvertirSha256(string texto)

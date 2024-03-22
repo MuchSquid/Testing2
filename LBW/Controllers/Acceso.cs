@@ -31,14 +31,15 @@ namespace LBW.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario _usuario)
         {
-            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.Nombre,_usuario.Clave);
+            Console.WriteLine("Pass 1234 😍", _usuario);
+            var usuario = _UsuarioDatos.ValidarUsuario(_usuario.UsuarioID);
             try
             {
                 if (usuario != null)
                 {
                     var claims = new List<Claim>
                     {
-                     new Claim(ClaimTypes.Name, usuario.Nombre)
+                     new Claim(ClaimTypes.Name, usuario.NombreCompleto)
                     };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

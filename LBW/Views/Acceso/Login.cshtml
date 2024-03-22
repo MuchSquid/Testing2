@@ -32,23 +32,13 @@
 
                         .Items(groupItems =>
                         {
-                            groupItems.AddSimpleFor(m => m.Nombre)
+                            groupItems.AddSimpleFor(m => m.UsuarioID)
                         .Label(l => l.Visible(false))
                         .Editor(e => e.TextBox()
                         .Placeholder("Usuario")
                         .ElementAttr(new { @class = "form-input-user" })
                         );
-
-
-
-                            groupItems.AddSimpleFor(m => m.Clave)
-                        .Label(l => l.Visible(false))
-                        .Editor(e => e.TextBox()
-                        .Placeholder("Contraseña")
-                        .Mode(TextBoxMode.Password)
-
-                        .ElementAttr(new { @class = "form-input-pass" })
-                        );
+                            
                         });
 
                         items.AddButton()

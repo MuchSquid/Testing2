@@ -15,12 +15,11 @@ namespace LBW.Models.Entity
         {
         }
 
+        // public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Cuenta> Cuentas { get; set; }
-        public DbSet<Producto> Productos { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            /*
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.UsuarioID);
@@ -50,55 +49,48 @@ namespace LBW.Models.Entity
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("GETDATE()");
             });
+            */
 
-            modelBuilder.Entity<Cuenta>(entity =>
+            modelBuilder.Entity<Usuario>(entity =>
             {
-                entity.HasKey(e => e.CuentaID);
+                entity.HasKey(e => e.UsuarioID);
 
-                entity.ToTable("Cuentas");
-
-                entity.Property(e => e.CuentaID)
-                    .HasColumnName("CuentaID");
+                entity.ToTable("USUARIO");
 
                 entity.Property(e => e.UsuarioID)
-                    .HasColumnName("UsuarioID");
-
-                entity.Property(e => e.TipoCuenta)
-                    .IsRequired()
-                    .HasColumnName("TipoCuenta")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Saldo)
-                    .HasColumnName("Saldo")
-                    .HasColumnType("decimal(10, 2)");
-
-                entity.HasOne(d => d.Usuario)
-                    .WithMany(p => p.Cuentas)
-                    .HasForeignKey(d => d.UsuarioID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cuentas_Usuarios");
-            });
-
-            modelBuilder.Entity<Producto>(entity =>
-            {
-                entity.HasKey(e => e.ProductoID);
-
-                entity.ToTable("Productos");
-
-                entity.Property(e => e.ProductoID)
-                    .HasColumnName("ProductoID");
-
-                entity.Property(e => e.Nombre)
-                    .IsRequired()
-                    .HasColumnName("Nombre")
+                    .HasColumnName("USER_NAME")
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Precio)
-                    .HasColumnName("Precio")
-                    .HasColumnType("decimal(10, 2)");
+                entity.Property(e => e.NombreCompleto)
+                    .HasColumnName("FULL_NAME")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
 
-                entity.Property(e => e.Stock)
-                    .HasColumnName("Stock");
+                entity.Property(e => e.Correo)
+                    .HasColumnName("EMAIL_ADDR")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+    
+                entity.Property(e => e.Rol)
+                    .HasColumnName("ROL")   // Convertir de bit a bool
+                    .IsRequired(false);        // Asumiendo que el campo es requerido
+
+                entity.Property(e => e.GMT_OFFSET)
+                    .HasColumnName("GMT_OFFSET")
+                    .IsRequired(false); 
+
+                entity.Property(e => e.UsuarioDeshabilitado)
+                    .HasColumnName("USER_DISABLED")
+                    .IsRequired(false);
+
+                entity.Property(e => e.FechaDeshabilitado)
+                    .HasColumnName("DATE_DISABLED")
+                    .HasColumnType("datetime")
+                    .IsRequired(false);
+
+                // Si quieres que el campo FechaDeshabilitado tenga un valor predeterminado
+                // de la fecha actual en caso de ser NULL, podrías usar algo como esto:
+                // .HasDefaultValueSql("GETDATE()");
             });
 
             OnModelCreatingPartial(modelBuilder);

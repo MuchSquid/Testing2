@@ -11,10 +11,6 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using LBW.Models.Entity;
-using Microsoft.CodeAnalysis.Scripting;
-using BCrypt.Net;
-using System.Text;
-using System.Security.Cryptography;
 
 namespace LBW.Controllers
 {
@@ -22,12 +18,6 @@ namespace LBW.Controllers
     public class UsuariosController : Controller
     {
         private LbwContext _context;
-
-        public IActionResult Usuarios()
-        {
-            @ViewBag.perfil = "active";
-            return View();
-        }
 
         public UsuariosController(LbwContext context) {
             _context = context;
@@ -37,10 +27,12 @@ namespace LBW.Controllers
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
             var usuarios = _context.Usuarios.Select(i => new {
                 i.UsuarioID,
-                i.Nombre,
-                i.Email,
-                i.Clave,
-                i.FechaCreacion
+                i.NombreCompleto,
+                i.Correo,
+                i.Rol,
+                i.GMT_OFFSET,
+                i.UsuarioDeshabilitado,
+                i.FechaDeshabilitado
             });
 
             // If underlying data is a large SQL table, specify PrimaryKey and PaginateViaPrimaryKey.
@@ -52,55 +44,12 @@ namespace LBW.Controllers
             return Json(await DataSourceLoader.LoadAsync(usuarios, loadOptions));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> HashearYActualizarContrasenas()
-        {
-            // Este es solo un ejemplo y no debe usarse en producción sin las debidas precauciones.
-            var usuarios = await _context.Usuarios.ToListAsync();
-
-            foreach (var usuario in usuarios)
-            {
-                // Aquí deberías tener la contraseña en texto plano temporalmente, asumiendo que ya existe
-                string contrasenaPlana = usuario.Clave; // Esta propiedad debería existir temporalmente
-
-                // Genera el hash de la contraseña
-                string contrasenaHash = ConvertirSha256(contrasenaPlana);
-
-                // Almacena el hash en la nueva columna
-                usuario.Clave  = contrasenaHash;
-             //   bool esCorrecta = BCrypt.Net.BCrypt.Verify(contrasenaIntroducidaPorElUsuario, hashAlmacenado);
-         
-                // Opcional: Eliminar la contraseña en texto plano si ya no es necesaria
-                // usuario.ContrasenaPlana = null;
-            }
-
-            // Guarda los cambios en la base de datos
-            await _context.SaveChangesAsync();
-
-            return Ok("Contraseñas actualizadas.");
-        }
-
-        public static string ConvertirSha256(string texto)
-        {
-            StringBuilder Sb = new StringBuilder();
-
-            using (SHA256 hash = SHA256.Create())
-            {
-                Encoding enc = Encoding.UTF8;
-                byte[] result = hash.ComputeHash(enc.GetBytes(texto));
-                foreach (byte b in result)
-                    Sb.Append(b.ToString("x2"));
-            }
-            return Sb.ToString();
-        }
-
         [HttpPost]
         public async Task<IActionResult> Post(string values) {
             var model = new Usuario();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            model.Clave = BCrypt.Net.BCrypt.HashPassword(model.Clave);
             if(!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
@@ -111,7 +60,7 @@ namespace LBW.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int key, string values) {
+        public async Task<IActionResult> Put(string key, string values) {
             var model = await _context.Usuarios.FirstOrDefaultAsync(item => item.UsuarioID == key);
             if(model == null)
                 return StatusCode(409, "Object not found");
@@ -127,7 +76,7 @@ namespace LBW.Controllers
         }
 
         [HttpDelete]
-        public async Task Delete(int key) {
+        public async Task Delete(string key) {
             var model = await _context.Usuarios.FirstOrDefaultAsync(item => item.UsuarioID == key);
 
             _context.Usuarios.Remove(model);
@@ -137,30 +86,39 @@ namespace LBW.Controllers
 
         private void PopulateModel(Usuario model, IDictionary values) {
             string USUARIO_ID = nameof(Usuario.UsuarioID);
-            string NOMBRE = nameof(Usuario.Nombre);
-            string EMAIL = nameof(Usuario.Email);
-            string CLAVE = nameof(Usuario.Clave);
-            string FECHA_CREACION = nameof(Usuario.FechaCreacion);
+            string NOMBRE_COMPLETO = nameof(Usuario.NombreCompleto);
+            string CORREO = nameof(Usuario.Correo);
+            string ROL = nameof(Usuario.Rol);
+            string GMT_OFFSET = nameof(Usuario.GMT_OFFSET);
+            string USUARIO_DESHABILITADO = nameof(Usuario.UsuarioDeshabilitado);
+            string FECHA_DESHABILITADO = nameof(Usuario.FechaDeshabilitado);
 
             if(values.Contains(USUARIO_ID)) {
-                model.UsuarioID = Convert.ToInt32(values[USUARIO_ID]);
+                model.UsuarioID = Convert.ToString(values[USUARIO_ID]);
             }
 
-            if(values.Contains(NOMBRE)) {
-                model.Nombre = Convert.ToString(values[NOMBRE]);
+            if(values.Contains(NOMBRE_COMPLETO)) {
+                model.NombreCompleto = Convert.ToString(values[NOMBRE_COMPLETO]);
             }
 
-            if(values.Contains(EMAIL)) {
-                model.Email = Convert.ToString(values[EMAIL]);
+            if(values.Contains(CORREO)) {
+                model.Correo = Convert.ToString(values[CORREO]);
             }
 
-            if (values.Contains(CLAVE))
-            {
-                model.Clave = Convert.ToString(values[CLAVE]);
+            if(values.Contains(ROL)) {
+                model.Rol = values[ROL] != null ? Convert.ToBoolean(values[ROL]) : (bool?)null;
             }
 
-            if (values.Contains(FECHA_CREACION)) {
-                model.FechaCreacion = Convert.ToDateTime(values[FECHA_CREACION]);
+            if(values.Contains(GMT_OFFSET)) {
+                model.GMT_OFFSET = values[GMT_OFFSET] != null ? Convert.ToInt32(values[GMT_OFFSET]) : (int?)null;
+            }
+
+            if(values.Contains(USUARIO_DESHABILITADO)) {
+                model.UsuarioDeshabilitado = values[USUARIO_DESHABILITADO] != null ? Convert.ToBoolean(values[USUARIO_DESHABILITADO]) : (bool?)null;
+            }
+
+            if(values.Contains(FECHA_DESHABILITADO)) {
+                model.FechaDeshabilitado = values[FECHA_DESHABILITADO] != null ? Convert.ToDateTime(values[FECHA_DESHABILITADO]) : (DateTime?)null;
             }
         }
 

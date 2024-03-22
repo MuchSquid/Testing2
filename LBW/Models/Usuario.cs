@@ -4,10 +4,12 @@ namespace LBW.Models
 {
     public class Usuario
     {
-        public int UsuarioID { get; set; }
-        public string Nombre { get; set; }
-        public string Email { get; set; }
-        public string Clave { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public String UsuarioID { get; set; }
+        public String? NombreCompleto { get; set; }
+        public String? Correo { get; set; }
+        public bool? Rol { get; set; }
+        public int? GMT_OFFSET { get; set; }
+        public bool? UsuarioDeshabilitado { get; set; }
+        public DateTime? FechaDeshabilitado { get; set; }
     }
 }

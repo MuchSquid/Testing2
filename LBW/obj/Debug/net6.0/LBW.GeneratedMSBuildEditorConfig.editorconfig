@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LBW
 build_property.RootNamespace = LBW
-build_property.ProjectDir = C:\Users\fabri\OneDrive\Desktop\CATCH 2\LBW\
+build_property.ProjectDir = C:\Users\esteb\Desktop\Testeo4\Testing2\LBW\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\fabri\OneDrive\Desktop\CATCH 2\LBW
+build_property.MSBuildProjectDirectory = C:\Users\esteb\Desktop\Testeo4\Testing2\LBW
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Acceso/Login.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Acceso/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/GM/IngresoMuestras.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/GM/IngresoMuestras.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01cSW5ncmVzb011ZXN0cmFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/GM/Recepcion.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/GM/Recepcion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR01cUmVjZXBjaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/GR/Analisis.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/GR/Analisis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR1JcQW5hbGlzaXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/GR/Autorizar.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/GR/Autorizar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR1JcQXV0b3JpemFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Inicio/Bienvenida.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Inicio/Bienvenida.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXEJpZW52ZW5pZGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/ReporteCliente/Reporte.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/ReporteCliente/Reporte.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZUNsaWVudGVcUmVwb3J0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Shared/Error.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Shared/_Layout.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Shared/_LayoutLogin.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Shared/_LayoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/Usuarios/Usuarios.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/Usuarios/Usuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcVXN1YXJpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/_ViewImports.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/fabri/OneDrive/Desktop/CATCH 2/LBW/Views/_ViewStart.cshtml]
+[C:/Users/esteb/Desktop/Testeo4/Testing2/LBW/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
