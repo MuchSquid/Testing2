@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\LBW.csproj": {}
+    "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\LBW.csproj": {}
   },
   "projects": {
-    "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\LBW.csproj": {
+    "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\LBW.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\LBW.csproj",
+        "projectUniqueName": "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\LBW.csproj",
         "projectName": "LBW",
-        "projectPath": "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\LBW.csproj",
+        "projectPath": "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\LBW.csproj",
         "packagesPath": "C:\\Users\\esteb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\obj\\",
+        "outputPath": "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\NuGet.Config",
+          "C:\\Users\\esteb\\Desktop\\Testing2\\NuGet.Config",
           "C:\\Users\\esteb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",

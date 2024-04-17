@@ -15,8 +15,10 @@ namespace LBW.Models.Entity
         {
         }
 
-        // public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Ubicacion> Ubicaciones { get; set; }
+        public DbSet<Site> Sites { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             /*
@@ -91,6 +93,57 @@ namespace LBW.Models.Entity
                 // Si quieres que el campo FechaDeshabilitado tenga un valor predeterminado
                 // de la fecha actual en caso de ser NULL, podrías usar algo como esto:
                 // .HasDefaultValueSql("GETDATE()");
+            });
+
+            modelBuilder.Entity<Ubicacion>(entity =>
+            {
+                entity.HasKey(e => e.ID_LOCATION);
+
+                entity.ToTable("UBICACION");
+
+                entity.Property(e => e.ID_LOCATION)
+                    .HasColumnName("ID_LOCATION")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Name_location)
+                    .HasColumnName("NAME_LOCATION")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("DESCRIPTION")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Address)
+                    .HasColumnName("ADDRESS")  
+                    .IsRequired(false);       
+
+                entity.Property(e => e.Contact)
+                    .HasColumnName("CONTACT")
+                    .IsRequired(false);
+
+            });
+
+            modelBuilder.Entity<Site>(entity =>
+            {
+                entity.HasKey(e => e.IdSite);
+
+                entity.ToTable("SITE");
+
+                entity.Property(e => e.IdSite)
+                    .HasColumnName("ID_SITE")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.NameSite)
+                    .HasColumnName("NAME_SITE")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Compania)
+                    .HasColumnName("COMPANIA")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

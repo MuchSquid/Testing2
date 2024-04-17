@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HgtwT7xtFjDgHUm70np7eaXAuYbIo1OC9zazVgefmJf2zNqYgBa3cJpmGazsNZ0RP0sIbtgMm+MPbsNr3/I+/Q==",
+  "dgSpecHash": "zKfNKSqReRhz5wdD5RRz83gYFOGC5wLK7JfSBp5VQPqQBvwOzcb7MKMZKb0ct78I+aYe50En91qFL3yTonCM8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\esteb\\Desktop\\Testeo4\\Testing2\\LBW\\LBW.csproj",
+  "projectFilePath": "C:\\Users\\esteb\\Desktop\\Testing2\\LBW\\LBW.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\esteb\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\esteb\\.nuget\\packages\\buildbundlerminifier\\2.9.406\\buildbundlerminifier.2.9.406.nupkg.sha512",
