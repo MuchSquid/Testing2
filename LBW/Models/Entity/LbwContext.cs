@@ -18,7 +18,10 @@ namespace LBW.Models.Entity
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Ubicacion> Ubicaciones { get; set; }
         public DbSet<Site> Sites { get; set; }
-
+        public DbSet<Unidad> Unidades { get; set; }
+        public DbSet<TipoAnalisis> TipoAnalisiss { get; set; }
+        public DbSet<Lista> Listas { get; set; }
+        public DbSet<Instrumento> Instrumentos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             /*
@@ -144,6 +147,151 @@ namespace LBW.Models.Entity
                     .HasColumnName("COMPANIA")
                     .HasMaxLength(100)
                     .IsRequired(false);
+            });
+
+            modelBuilder.Entity<Unidad>(entity =>
+            {
+                entity.HasKey(e => e.IdUnidad);
+
+                entity.ToTable("UNIDAD");
+
+                entity.Property(e => e.IdUnidad)
+                    .HasColumnName("ID_UNIDAD")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("NAME_UNIDAD")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.DisplayString)
+                    .HasColumnName("DISPLAY_STRING")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.ChangedBy)
+                   .HasColumnName("CHANGED_BY")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
+
+                entity.Property(e => e.ChangedOn)
+                    .HasColumnName("CHANGED_ON")
+                    .IsRequired(false);
+
+                entity.Property(e => e.Removed)
+                    .HasColumnName("REMOVED")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Description)
+                   .HasColumnName("DESCRIPTION")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
+
+            });
+
+            modelBuilder.Entity<TipoAnalisis>(entity =>
+            {
+                entity.HasKey(e => e.IdTipoA);
+
+                entity.ToTable("TIPO_ANALISIS");
+
+                entity.Property(e => e.IdTipoA)
+                    .HasColumnName("ID_TIPOA")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.NombreA)
+                    .HasColumnName("NAME_TIPO_ANALISIS")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Descripcion)
+                    .HasColumnName("DESCRIPTION")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Removed)
+                   .HasColumnName("REMOVED")
+                   .IsRequired(false);
+
+            });
+
+            modelBuilder.Entity < Lista>(entity =>
+            {
+                entity.HasKey(e => e.IdLista);
+
+                entity.ToTable("LISTA");
+
+                entity.Property(e => e.IdLista)
+                    .HasColumnName("ID_LISTA")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.List)
+                    .HasColumnName("LIST")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.NameLista)
+                    .HasColumnName("NAME_LIST")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Value)
+                   .HasColumnName("VALUE")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
+
+                entity.Property(e => e.OrderNumber)
+                  .HasColumnName("ORDER_NUMBER")
+                  .IsRequired(false);
+            });
+
+            modelBuilder.Entity<Instrumento>(entity =>
+            {
+                entity.HasKey(e => e.IdInstrumento);
+
+                entity.ToTable("INSTRUMENTO");
+
+                entity.Property(e => e.IdInstrumento)
+                    .HasColumnName("ID_INSTRUMENTO")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.IdCodigo)
+                    .HasColumnName("ID_CODIGO")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Descripcion)
+                    .HasColumnName("DESCRIPCION")
+                    .HasMaxLength(100)
+                    .IsRequired(false);
+
+                entity.Property(e => e.Nombre)
+                   .HasColumnName("NOMBRE")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
+
+                entity.Property(e => e.Tipo)
+                  .HasColumnName("TIPO")
+                  .HasMaxLength(100)
+                  .IsRequired(false);
+
+                entity.Property(e => e.Vendor)
+                 .HasColumnName("VENDOR")
+                 .HasMaxLength(100)
+                 .IsRequired(false);
+
+                entity.Property(e => e.Habilitado)
+                 .HasColumnName("HABILITADO")
+                 .IsRequired(false);
+
+                entity.Property(e => e.FechaCalibrado)
+               .HasColumnName("FECHA_CALIBRACION")
+               .IsRequired(false);
+
+                entity.Property(e => e.FechaCaducidad)
+               .HasColumnName("FECHA_CADUCIDAD")
+               .IsRequired(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
