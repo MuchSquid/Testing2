@@ -6,6 +6,8 @@
         {
             PlantasC = new HashSet<Planta>();
             PlantillaC = new HashSet<Plantilla>();
+            ProyectoC = new HashSet<Proyecto>();
+            MuestraC = new HashSet<Muestra>();
         }
         public int IdCliente { get; set; }
         public int IdSite { get; set; }
@@ -21,5 +23,8 @@
         public virtual Site IdSiteNavigationC { get; set; }
         public virtual ICollection<Planta> PlantasC { get; set; }
         public virtual ICollection<Plantilla> PlantillaC { get; set; }
+        public virtual ICollection<Proyecto> ProyectoC { get; set; }
+        public virtual ICollection<Muestra> MuestraC { get; set; }
+
     }
 }

@@ -6,6 +6,8 @@ namespace LBW.Models.Entity
         public Analisis() 
         {
             AnalisisDetallesA = new HashSet<AnalisisDetalle>();
+            PlantillaDetalleA = new HashSet<PlantillaDetalle>();
+            ResultadosA = new HashSet<Resultado>();
         }
         public int IdAnalisis { get; set; }
 
@@ -22,5 +24,7 @@ namespace LBW.Models.Entity
 
         public virtual TipoAnalisis IdANavigation { get; set;}
         public virtual ICollection<AnalisisDetalle> AnalisisDetallesA { get; set; }
+        public virtual ICollection<PlantillaDetalle> PlantillaDetalleA { get; set; }
+        public virtual ICollection<Resultado> ResultadosA { get; set; }
     }
 }

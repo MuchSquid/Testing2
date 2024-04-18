@@ -1,4 +1,4 @@
-﻿@using LBW.Models
+﻿@using LBW.Models;
 @{
     ViewData["Title"] = "ReporteCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,40 +50,8 @@
             </h2>
         </div>
     </div>
-    @(Html.DevExtreme().DataGrid<LBW.Models.Entity.Plantilla>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("Plantillas")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .DeleteAction("Delete")
-        .Key("IdTL")
-    )
-    .RemoteOperations(true)
-    .Columns(columns => {
+ 
 
-        columns.AddFor(m => m.IdCliente).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Plantillas").LoadAction("ClientesLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        );
-
-        columns.AddFor(m => m.NameTlist);
-
-        columns.AddFor(m => m.Description);
-
-        columns.AddFor(m => m.ChangedOn);
-
-        columns.AddFor(m => m.ChangedBy);
-
-        columns.AddFor(m => m.Removed);
-    })
-    .Editing(e => e
-        .AllowAdding(true)
-        .AllowUpdating(true)
-        .AllowDeleting(true)
-    )
-)
 }
 
 @section PageActions {
